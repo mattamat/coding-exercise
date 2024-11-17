@@ -53,5 +53,16 @@ class ScoreboardTest {
         Assertions.assertEquals(0, match.getScoreAwayTeam());
     }
 
+    @Test
+    void updateScore() {
+        Scoreboard scoreboard = new Scoreboard();
+        scoreboard.startMatch("homeTeam", "awayTeam");
+        scoreboard.updateScore("homeTeam", "awayTeam", 1, 0);
+        List<Match> summary = scoreboard.getSummary();
+        var match = summary.getFirst();
+        Assertions.assertEquals(1, match.getScoreHomeTeam());
+        Assertions.assertEquals(0, match.getScoreAwayTeam());
+    }
+
 
 }

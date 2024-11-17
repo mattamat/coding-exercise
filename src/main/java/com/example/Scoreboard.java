@@ -14,4 +14,8 @@ public class Scoreboard {
     public List<Match> getSummary() {
         return summary;
     }
+
+    public void updateScore(String homeTeam, String awayTeam, int homeTeamScore, int awayTeamScore) {
+
+    }
 }
