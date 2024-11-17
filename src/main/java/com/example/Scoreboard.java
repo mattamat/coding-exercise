@@ -16,8 +16,15 @@ public class Scoreboard {
     }
 
     public void updateScore(String homeTeam, String awayTeam, int homeTeamScore, int awayTeamScore) {
-        summary.getFirst().setHomeScore(homeTeamScore);
-        summary.getFirst().setAwayScore(awayTeamScore);
+
+        var matchToUpdate  = summary.stream()
+                .filter(match ->
+                        match.getHomeTeam().equals(homeTeam) && match.getAwayTeam().equals(awayTeam))
+                .findFirst()
+                .get();
+
+        matchToUpdate.setHomeScore(homeTeamScore);
+        matchToUpdate.setAwayScore(awayTeamScore);
 
     }
 }
