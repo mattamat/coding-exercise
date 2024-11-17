@@ -33,5 +33,15 @@ class ScoreboardTest {
         Assertions.assertEquals("awayTeam", match.getAwayTeam());
     }
 
+    @Test
+    void startNewMatch_checkSummaryTeamNewContent() {
+        Scoreboard scoreboard = new Scoreboard();
+        scoreboard.startMatch("Japan", "Italy");
+        List<Match> summary = scoreboard.getSummary();
+        var match = summary.getFirst();
+        Assertions.assertEquals("Japan", match.getHomeTeam());
+        Assertions.assertEquals("Italy", match.getAwayTeam());
+    }
+
 
 }
