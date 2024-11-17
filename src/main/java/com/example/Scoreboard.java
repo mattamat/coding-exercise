@@ -8,7 +8,7 @@ public class Scoreboard {
     private List<Match> summary = new ArrayList<>();
 
     public void startMatch(String homeTeam, String awayTeam) {
-        summary.add(new Match());
+        summary.add(new Match(homeTeam, awayTeam));
     }
 
     public List<Match> getSummary() {
