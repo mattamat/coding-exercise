@@ -96,6 +96,19 @@ class ScoreboardTest {
                 () -> scoreboard.updateScore("Russia", "China", 1, 0));
     }
 
+    @Test
+    void finishMatch() {
+        Scoreboard scoreboard = new Scoreboard();
+        scoreboard.startMatch("Brazil", "Japan");
+        scoreboard.startMatch("Norway", "Sweden");
+        Assertions.assertEquals(2, scoreboard.getSummary().size());
+        scoreboard.finishMatch("Brazil", "Japan");
+        Assertions.assertEquals(1, scoreboard.getSummary().size());
+        Assertions.assertEquals("Norway", scoreboard.getSummary().getFirst().getScoreHomeTeam());
+        Assertions.assertEquals("Sweden", scoreboard.getSummary().getFirst().getScoreAwayTeam());
+
+    }
+
 
 
 

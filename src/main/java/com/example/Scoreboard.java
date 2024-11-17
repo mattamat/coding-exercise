@@ -31,4 +31,8 @@ public class Scoreboard {
         matchToUpdate.setAwayScore(awayTeamScore);
 
     }
+
+    public void finishMatch(String homeTeam, String awayTeam) {
+
+    }
 }
