@@ -64,5 +64,21 @@ class ScoreboardTest {
         Assertions.assertEquals(0, match.getScoreAwayTeam());
     }
 
+    @Test
+    void updateScore_multipleMatches() {
+        Scoreboard scoreboard = new Scoreboard();
+        scoreboard.startMatch("Brazil", "Japan");
+        scoreboard.startMatch("Norway", "Sweden");
+        scoreboard.startMatch("Poland", "France");
+        scoreboard.updateScore("Poland", "France", 1, 0);
+        List<Match> summary = scoreboard.getSummary();
+        Assertions.assertEquals(3, summary.size());
+        var match = summary.get(2);
+        Assertions.assertEquals(1, match.getScoreHomeTeam());
+        Assertions.assertEquals(0, match.getScoreAwayTeam());
+    }
+
+
+
 
 }
