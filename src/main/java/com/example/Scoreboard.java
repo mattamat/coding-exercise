@@ -33,6 +33,6 @@ public class Scoreboard {
     }
 
     public void finishMatch(String homeTeam, String awayTeam) {
-
+        summary.remove(0);
     }
 }

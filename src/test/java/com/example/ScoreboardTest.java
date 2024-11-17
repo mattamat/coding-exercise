@@ -104,8 +104,8 @@ class ScoreboardTest {
         Assertions.assertEquals(2, scoreboard.getSummary().size());
         scoreboard.finishMatch("Brazil", "Japan");
         Assertions.assertEquals(1, scoreboard.getSummary().size());
-        Assertions.assertEquals("Norway", scoreboard.getSummary().getFirst().getScoreHomeTeam());
-        Assertions.assertEquals("Sweden", scoreboard.getSummary().getFirst().getScoreAwayTeam());
+        Assertions.assertEquals("Norway", scoreboard.getSummary().getFirst().getHomeTeam());
+        Assertions.assertEquals("Sweden", scoreboard.getSummary().getFirst().getAwayTeam());
 
     }
 
