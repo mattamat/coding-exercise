@@ -16,6 +16,8 @@ public class Scoreboard {
     }
 
     public void updateScore(String homeTeam, String awayTeam, int homeTeamScore, int awayTeamScore) {
+        summary.getFirst().setHomeScore(homeTeamScore);
+        summary.getFirst().setAwayScore(awayTeamScore);
 
     }
 }

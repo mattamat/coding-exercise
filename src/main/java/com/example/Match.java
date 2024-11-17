@@ -4,6 +4,8 @@ public class Match {
 
     private String homeTeam;
     private String awayTeam;
+    private int homeTeamScore;
+    private int awayTeamScore;
 
     public Match(String homeTeam, String awayTeam) {
         this.homeTeam = homeTeam;
@@ -19,10 +21,18 @@ public class Match {
     }
 
     public int getScoreHomeTeam() {
-        return 0;
+        return homeTeamScore;
     }
 
     public int getScoreAwayTeam() {
-        return 0;
+        return awayTeamScore;
+    }
+
+    public void setHomeScore(int homeTeamScore) {
+        this.homeTeamScore = homeTeamScore;
+    }
+
+    public void setAwayScore(int awayTeamScore) {
+        this.awayTeamScore = awayTeamScore;
     }
 }
