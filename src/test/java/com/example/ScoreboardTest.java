@@ -78,6 +78,16 @@ class ScoreboardTest {
         Assertions.assertEquals(0, match.getScoreAwayTeam());
     }
 
+    @Test
+    void updateScore_negativeScoreThrowsException() {
+        Scoreboard scoreboard = new Scoreboard();
+        scoreboard.startMatch("homeTeam", "awayTeam");
+        var exception = Assertions.assertThrows((Exception.class),
+                () -> scoreboard.updateScore("homeTeam", "awayTeam", -1, 0));
+        Assertions.assertEquals("Score can not be a negative number", exception.getMessage());
+    }
+
+
 
 
 
