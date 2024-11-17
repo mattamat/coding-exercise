@@ -54,7 +54,7 @@ class ScoreboardTest {
     }
 
     @Test
-    void updateScore() {
+    void updateScore_oneMatch() throws Exception {
         Scoreboard scoreboard = new Scoreboard();
         scoreboard.startMatch("homeTeam", "awayTeam");
         scoreboard.updateScore("homeTeam", "awayTeam", 1, 0);
@@ -65,7 +65,7 @@ class ScoreboardTest {
     }
 
     @Test
-    void updateScore_multipleMatches() {
+    void updateScore_multipleMatches() throws Exception {
         Scoreboard scoreboard = new Scoreboard();
         scoreboard.startMatch("Brazil", "Japan");
         scoreboard.startMatch("Norway", "Sweden");
@@ -86,6 +86,17 @@ class ScoreboardTest {
                 () -> scoreboard.updateScore("homeTeam", "awayTeam", -1, 0));
         Assertions.assertEquals("Score can not be a negative number", exception.getMessage());
     }
+
+    @Test
+    void updateScore_MatchNotExisting() throws Exception {
+        Scoreboard scoreboard = new Scoreboard();
+        scoreboard.startMatch("Brazil", "Japan");
+        scoreboard.startMatch("Norway", "Sweden");
+        Assertions.assertThrows((Exception.class),
+                () -> scoreboard.updateScore("Russia", "China", 1, 0));
+    }
+
+
 
 
 

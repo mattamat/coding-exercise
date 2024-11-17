@@ -15,7 +15,11 @@ public class Scoreboard {
         return summary;
     }
 
-    public void updateScore(String homeTeam, String awayTeam, int homeTeamScore, int awayTeamScore) {
+    public void updateScore(String homeTeam, String awayTeam, int homeTeamScore, int awayTeamScore) throws Exception {
+
+        if (homeTeamScore < 0 || awayTeamScore < 0) {
+            throw new Exception("Score can not be a negative number");
+        }
 
         var matchToUpdate  = summary.stream()
                 .filter(match ->
