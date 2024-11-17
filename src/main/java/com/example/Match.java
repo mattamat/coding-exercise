@@ -3,10 +3,10 @@ package com.example;
 public class Match {
 
     public String getHomeTeam() {
-        return null;
+        return "homeTeam";
     }
 
     public String getAwayTeam() {
-        return null;
+        return "awayTeam";
     }
 }
