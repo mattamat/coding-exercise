@@ -213,9 +213,13 @@ class ScoreboardTest {
 
     }
 
+    @Test
+    void startTwoEqualMatches() {
+        Scoreboard scoreboard = new Scoreboard();
+        scoreboard.startMatch("Mexico", "Canada");
+        Assertions.assertThrows(Exception.class, () -> scoreboard.startMatch("Mexico", "Canada"));
 
-
-
+    }
 
 
 }
