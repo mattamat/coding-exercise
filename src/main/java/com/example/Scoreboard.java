@@ -38,7 +38,8 @@ public class Scoreboard {
 
     private Predicate<Match> isMatchInSummary(String homeTeam, String awayTeam) {
         return match ->
-                match.getHomeTeam().equals(homeTeam) && match.getAwayTeam().equals(awayTeam);
+                match.getHomeTeam().equals(homeTeam) && match.getAwayTeam().equals(awayTeam)
+                        || match.getHomeTeam().equals(awayTeam) && match.getAwayTeam().equals(homeTeam);
     }
 
     private Match getMatch(String homeTeam, String awayTeam) {
