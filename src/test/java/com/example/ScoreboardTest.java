@@ -138,6 +138,15 @@ class ScoreboardTest {
                 () -> scoreboard.finishMatch("Russia", "China"));
     }
 
+    @Test
+    void summary_printScoreBoard() {
+        Scoreboard scoreboard = new Scoreboard();
+        scoreboard.startMatch("Brazil", "Japan");
+        var score = scoreboard.getSummary().getFirst().toString();
+        Assertions.assertEquals("Brazil 0 - Japan 0", score);
+
+    }
+
 
 
 }
