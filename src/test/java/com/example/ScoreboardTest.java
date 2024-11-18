@@ -184,6 +184,35 @@ class ScoreboardTest {
 
     }
 
+    @Test
+    void summary_HighestTotalScoreAndMostRecentWhenSameScore() throws Exception {
+        Scoreboard scoreboard = new Scoreboard();
+        scoreboard.startMatch("Mexico", "Canada");
+        scoreboard.startMatch("Spain", "Brazil");
+        scoreboard.startMatch("Germany", "France");
+        scoreboard.startMatch("Uruguay", "Italy");
+        scoreboard.startMatch("Argentina", "Australia");
+
+        scoreboard.updateScore("Mexico", "Canada", 0, 5);
+        scoreboard.updateScore("Spain", "Brazil", 10, 2);
+        scoreboard.updateScore("Germany", "France", 2, 2);
+        scoreboard.updateScore("Uruguay", "Italy", 6, 6);
+        scoreboard.updateScore("Argentina", "Australia", 3, 1);
+
+        var score1 = scoreboard.getSummary().get(0).toString();
+        var score2 = scoreboard.getSummary().get(1).toString();
+        var score3 = scoreboard.getSummary().get(2).toString();
+        var score4 = scoreboard.getSummary().get(3).toString();
+        var score5 = scoreboard.getSummary().get(4).toString();
+
+        Assertions.assertEquals("Uruguay 6 - Italy 6", score1);
+        Assertions.assertEquals("Spain 10 - Brazil 2", score2);
+        Assertions.assertEquals("Mexico 0 - Canada 5", score3);
+        Assertions.assertEquals("Argentina 3 - Australia 1", score4);
+        Assertions.assertEquals("Germany 2 - France 2", score5);
+
+    }
+
 
 
 
