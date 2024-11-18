@@ -8,7 +8,11 @@ public class Scoreboard {
 
     private List<Match> summary = new ArrayList<>();
 
-    public void startMatch(String homeTeam, String awayTeam) {
+    public void startMatch(String homeTeam, String awayTeam) throws Exception {
+        if (summary.stream().anyMatch(match ->
+                match.getHomeTeam().equals(homeTeam) && match.getAwayTeam().equals(awayTeam))) {
+            throw new Exception();
+        }
         summary.add(new Match(homeTeam, awayTeam));
     }
 

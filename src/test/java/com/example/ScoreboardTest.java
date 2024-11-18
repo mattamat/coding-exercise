@@ -8,7 +8,7 @@ import java.util.List;
 class ScoreboardTest {
 
     @Test
-    void startNewMatch_notNull() {
+    void startNewMatch_notNull() throws Exception {
         Scoreboard scoreboard = new Scoreboard();
         scoreboard.startMatch("homeTeam", "awayTeam");
         List<Match> summary = scoreboard.getSummary();
@@ -16,7 +16,7 @@ class ScoreboardTest {
     }
 
     @Test
-    void startNewMatch_summaryNotEmpty() {
+    void startNewMatch_summaryNotEmpty() throws Exception {
         Scoreboard scoreboard = new Scoreboard();
         scoreboard.startMatch("homeTeam", "awayTeam");
         List<Match> summary = scoreboard.getSummary();
@@ -24,7 +24,7 @@ class ScoreboardTest {
     }
 
     @Test
-    void startNewMatch_checkSummaryTeamContent() {
+    void startNewMatch_checkSummaryTeamContent() throws Exception {
         Scoreboard scoreboard = new Scoreboard();
         scoreboard.startMatch("homeTeam", "awayTeam");
         List<Match> summary = scoreboard.getSummary();
@@ -34,7 +34,7 @@ class ScoreboardTest {
     }
 
     @Test
-    void startNewMatch_checkSummaryTeamNewContent() {
+    void startNewMatch_checkSummaryTeamNewContent() throws Exception {
         Scoreboard scoreboard = new Scoreboard();
         scoreboard.startMatch("Japan", "Italy");
         List<Match> summary = scoreboard.getSummary();
@@ -44,7 +44,7 @@ class ScoreboardTest {
     }
 
     @Test
-    void startNewMatch_checkSummaryScore() {
+    void startNewMatch_checkSummaryScore() throws Exception {
         Scoreboard scoreboard = new Scoreboard();
         scoreboard.startMatch("Japan", "Italy");
         List<Match> summary = scoreboard.getSummary();
@@ -81,7 +81,7 @@ class ScoreboardTest {
     }
 
     @Test
-    void updateScore_negativeScoreThrowsException() {
+    void updateScore_negativeScoreThrowsException() throws Exception {
         Scoreboard scoreboard = new Scoreboard();
         scoreboard.startMatch("homeTeam", "awayTeam");
 
@@ -101,7 +101,7 @@ class ScoreboardTest {
     }
 
     @Test
-    void finishMatch() {
+    void finishMatch() throws Exception {
         Scoreboard scoreboard = new Scoreboard();
         scoreboard.startMatch("Brazil", "Japan");
         scoreboard.startMatch("Norway", "Sweden");
@@ -116,7 +116,7 @@ class ScoreboardTest {
 
 
     @Test
-    void finishMatch_lastGameFinishesFirst() {
+    void finishMatch_lastGameFinishesFirst() throws Exception {
         Scoreboard scoreboard = new Scoreboard();
         scoreboard.startMatch("Brazil", "Japan");
         scoreboard.startMatch("Norway", "Sweden");
@@ -129,7 +129,7 @@ class ScoreboardTest {
     }
 
     @Test
-    void finishMatch_MatchNotExisting() {
+    void finishMatch_MatchNotExisting() throws Exception {
         Scoreboard scoreboard = new Scoreboard();
         scoreboard.startMatch("Brazil", "Japan");
         scoreboard.startMatch("Norway", "Sweden");
@@ -139,7 +139,7 @@ class ScoreboardTest {
     }
 
     @Test
-    void summary_printScoreBoard() {
+    void summary_printScoreBoard() throws Exception {
         Scoreboard scoreboard = new Scoreboard();
         scoreboard.startMatch("Brazil", "Japan");
         var score = scoreboard.getSummary().getFirst().toString();
@@ -214,7 +214,7 @@ class ScoreboardTest {
     }
 
     @Test
-    void startTwoEqualMatches() {
+    void startTwoEqualMatches() throws Exception {
         Scoreboard scoreboard = new Scoreboard();
         scoreboard.startMatch("Mexico", "Canada");
         Assertions.assertThrows(Exception.class, () -> scoreboard.startMatch("Mexico", "Canada"));
