@@ -11,4 +11,5 @@
 
 ## Notes
 - Not using any AI autocompletion tools
+- Not focusing on proper exceptions. Using normal Exception for all cases. Would've created my own exceptions, or at least used other premade exceptions, like IllegalArgumentException etc.
 - 

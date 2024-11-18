@@ -234,5 +234,24 @@ class ScoreboardTest {
 
     }
 
+    @Test
+    void startMatch_emptyString() {
+        Scoreboard scoreboard = new Scoreboard();
+        Assertions.assertThrows(Exception.class, () -> scoreboard.startMatch("Mexico", ""));
+    }
+
+    @Test
+    void startMatch_caseSensitiveSameTeam() {
+        Scoreboard scoreboard = new Scoreboard();
+        Assertions.assertThrows(Exception.class, () -> scoreboard.startMatch("Mexico", "mexico"));
+    }
+    @Test
+    void startMatch_sameTeamPlayingButDifferentHomeAway() throws Exception {
+        Scoreboard scoreboard = new Scoreboard();
+        scoreboard.startMatch("Norway","Brazil");
+        Assertions.assertThrows(Exception.class, () -> scoreboard.startMatch("Brazil", "Norway"));
+    }
+
+
 
 }
