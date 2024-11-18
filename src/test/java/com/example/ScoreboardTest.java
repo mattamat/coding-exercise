@@ -128,6 +128,15 @@ class ScoreboardTest {
         Assertions.assertTrue(summary.stream().noneMatch(match -> match.getHomeTeam().equals("China")));
     }
 
+    @Test
+    void finishMatch_MatchNotExisting() {
+        Scoreboard scoreboard = new Scoreboard();
+        scoreboard.startMatch("Brazil", "Japan");
+        scoreboard.startMatch("Norway", "Sweden");
+
+        Assertions.assertThrows((Exception.class),
+                () -> scoreboard.finishMatch("Russia", "China"));
+    }
 
 
 
