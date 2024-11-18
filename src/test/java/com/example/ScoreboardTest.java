@@ -167,6 +167,25 @@ class ScoreboardTest {
 
     }
 
+    @Test
+    void summary_mostRecentFirst() throws Exception {
+        Scoreboard scoreboard = new Scoreboard();
+        scoreboard.startMatch("Brazil", "Japan");
+        scoreboard.startMatch("Norway", "Sweden");
+        scoreboard.startMatch("Poland", "England");
+
+        var score1 = scoreboard.getSummary().get(0).toString();
+        var score2 = scoreboard.getSummary().get(1).toString();
+        var score3 = scoreboard.getSummary().get(2).toString();
+
+        Assertions.assertEquals("Poland 0 - England 0", score1);
+        Assertions.assertEquals("Norway 0 - Sweden 0", score2);
+        Assertions.assertEquals("Brazil 0 - Japan 0", score3);
+
+    }
+
+
+
 
 
 
