@@ -220,5 +220,18 @@ class ScoreboardTest {
 
     }
 
+    @Test
+    void startMatchWithSameTeamTwice() throws Exception {
+        Scoreboard scoreboard = new Scoreboard();
+        Assertions.assertThrows(Exception.class, () -> scoreboard.startMatch("Mexico", "Mexico"));
+    }
+
+    @Test
+    void startMatchWithOneTeamBeingNull() throws Exception {
+        Scoreboard scoreboard = new Scoreboard();
+        Assertions.assertThrows(Exception.class, () -> scoreboard.startMatch("Mexico", null));
+
+    }
+
 
 }
