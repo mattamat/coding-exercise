@@ -33,6 +33,12 @@ public class Scoreboard {
     }
 
     public void finishMatch(String homeTeam, String awayTeam) {
-        summary.remove(0);
+        var finishedMatch = summary.stream()
+                .filter(match ->
+                        match.getHomeTeam().equals(homeTeam) && match.getAwayTeam().equals(awayTeam))
+                .findFirst()
+                .orElseThrow();
+
+        summary.remove(finishedMatch);
     }
 }
