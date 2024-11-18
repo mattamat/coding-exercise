@@ -12,4 +12,6 @@
 ## Notes
 - Not using any AI autocompletion tools
 - Not focusing on proper exceptions. Using normal Exception for all cases. Would've created my own exceptions, or at least used other premade exceptions, like IllegalArgumentException etc.
-- 
+- Was not done in one sitting, rather multiple small sittings, often with other things done in between
+- the .orElseThrow() method on the Optional in getMatch(): Wouldve removed this, and done a ifPresent() check and thrown a specialized error if not present. But as mention, I am not focusing too much on exceptions.
+-

@@ -8,21 +8,11 @@ public class Match {
     private int awayTeamScore;
 
     public Match(String homeTeam, String awayTeam) throws Exception {
-        if (homeTeam == null
-                || awayTeam == null
-                || homeTeam.isBlank()
-                || awayTeam.isBlank()) {
-            throw new Exception("Missing team");
-        }
-
-        if (homeTeam.toLowerCase().equals(awayTeam.toLowerCase())){
-            throw new Exception("Teams are equal. A team cannot play against itself.");
-        }
-
-
+        inputValidation(homeTeam, awayTeam);
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
     }
+
 
     public String getHomeTeam() {
         return homeTeam;
@@ -62,5 +52,19 @@ public class Match {
     public String toString() {
         return homeTeam + " " + homeTeamScore + " - " + awayTeam + " " + awayTeamScore;
     }
+
+    private static void inputValidation(String homeTeam, String awayTeam) throws Exception {
+        if (homeTeam == null
+                || awayTeam == null
+                || homeTeam.isBlank()
+                || awayTeam.isBlank()) {
+            throw new Exception("Missing team");
+        }
+
+        if (homeTeam.equalsIgnoreCase(awayTeam)){
+            throw new Exception("Teams are equal. A team cannot play against itself.");
+        }
+    }
+
 
 }

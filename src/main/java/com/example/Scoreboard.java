@@ -10,19 +10,16 @@ public class Scoreboard {
     private final List<Match> summary = new ArrayList<>();
 
     public void startMatch(String homeTeam, String awayTeam) throws Exception {
-        if (summary.stream().anyMatch(isMatchInSummary(homeTeam, awayTeam))) {
-            throw new Exception();
-        }
-        summary.add(new Match(homeTeam, awayTeam));
+        var match = new Match(homeTeam, awayTeam);
+        checkIfMatchAlreadyExists(match);
+        summary.add(match);
     }
-
 
     public List<Match> getSummary() {
         return summary.stream()
                 .sorted(Comparator.comparingInt(Match::getTotalScore))
                 .toList()
                 .reversed();
-
     }
 
     public void updateScore(String homeTeam, String awayTeam, int homeTeamScore, int awayTeamScore) throws Exception {
@@ -47,5 +44,11 @@ public class Scoreboard {
                 .filter(isMatchInSummary(homeTeam, awayTeam))
                 .findFirst()
                 .orElseThrow();
+    }
+
+    private void checkIfMatchAlreadyExists(Match match) throws Exception {
+        if (summary.stream().anyMatch(isMatchInSummary(match.getHomeTeam(), match.getAwayTeam()))) {
+            throw new Exception();
+        }
     }
 }
