@@ -7,7 +7,14 @@ public class Match {
     private int homeTeamScore;
     private int awayTeamScore;
 
-    public Match(String homeTeam, String awayTeam) {
+    public Match(String homeTeam, String awayTeam) throws Exception {
+        if (homeTeam == null || awayTeam == null) {
+            throw new Exception("Missing team");
+        }
+        if (homeTeam.equals(awayTeam)){
+            throw new Exception("Teams are equal. A team cannot play against itself.");
+        }
+
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
     }
