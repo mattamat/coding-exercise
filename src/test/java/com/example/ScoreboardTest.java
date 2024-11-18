@@ -70,9 +70,11 @@ class ScoreboardTest {
         scoreboard.startMatch("Brazil", "Japan");
         scoreboard.startMatch("Norway", "Sweden");
         scoreboard.startMatch("Poland", "France");
+
         scoreboard.updateScore("Poland", "France", 1, 0);
         List<Match> summary = scoreboard.getSummary();
         Assertions.assertEquals(3, summary.size());
+
         var match = summary.get(2);
         Assertions.assertEquals(1, match.getScoreHomeTeam());
         Assertions.assertEquals(0, match.getScoreAwayTeam());
@@ -82,6 +84,7 @@ class ScoreboardTest {
     void updateScore_negativeScoreThrowsException() {
         Scoreboard scoreboard = new Scoreboard();
         scoreboard.startMatch("homeTeam", "awayTeam");
+
         var exception = Assertions.assertThrows((Exception.class),
                 () -> scoreboard.updateScore("homeTeam", "awayTeam", -1, 0));
         Assertions.assertEquals("Score can not be a negative number", exception.getMessage());
@@ -92,6 +95,7 @@ class ScoreboardTest {
         Scoreboard scoreboard = new Scoreboard();
         scoreboard.startMatch("Brazil", "Japan");
         scoreboard.startMatch("Norway", "Sweden");
+
         Assertions.assertThrows((Exception.class),
                 () -> scoreboard.updateScore("Russia", "China", 1, 0));
     }
@@ -102,15 +106,27 @@ class ScoreboardTest {
         scoreboard.startMatch("Brazil", "Japan");
         scoreboard.startMatch("Norway", "Sweden");
         Assertions.assertEquals(2, scoreboard.getSummary().size());
+
         scoreboard.finishMatch("Brazil", "Japan");
+
         Assertions.assertEquals(1, scoreboard.getSummary().size());
         Assertions.assertEquals("Norway", scoreboard.getSummary().getFirst().getHomeTeam());
         Assertions.assertEquals("Sweden", scoreboard.getSummary().getFirst().getAwayTeam());
-
     }
 
 
+    @Test
+    void finishMatch_lastGameFinishesFirst() {
+        Scoreboard scoreboard = new Scoreboard();
+        scoreboard.startMatch("Brazil", "Japan");
+        scoreboard.startMatch("Norway", "Sweden");
+        scoreboard.startMatch("China", "Russia");
+        var summary = scoreboard.getSummary();
 
+        scoreboard.finishMatch("China", "Russia");
+
+        Assertions.assertTrue(summary.stream().noneMatch(match -> match.getHomeTeam().equals("China")));
+    }
 
 
 
