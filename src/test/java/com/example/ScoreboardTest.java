@@ -147,6 +147,27 @@ class ScoreboardTest {
 
     }
 
+    @Test
+    void summary_highestTotalScoreFirst() throws Exception {
+        Scoreboard scoreboard = new Scoreboard();
+        scoreboard.startMatch("Brazil", "Japan");
+        scoreboard.updateScore("Brazil", "Japan", 3, 3);
+        scoreboard.startMatch("Norway", "Sweden");
+        scoreboard.updateScore("Norway", "Sweden", 10, 0);
+        scoreboard.startMatch("Poland", "England");
+        scoreboard.updateScore("Poland", "England", 3, 0);
+
+
+        var score1 = scoreboard.getSummary().get(0).toString();
+        Assertions.assertEquals("Norway 10 - Sweden 0", score1);
+        var score2 = scoreboard.getSummary().get(1).toString();
+        Assertions.assertEquals("Brazil 3 - Japan 3", score2);
+        var score3 = scoreboard.getSummary().get(2).toString();
+        Assertions.assertEquals("Poland 3 - England 0", score3);
+
+    }
+
+
 
 
 }
