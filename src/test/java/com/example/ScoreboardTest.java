@@ -75,7 +75,7 @@ class ScoreboardTest {
         List<Match> summary = scoreboard.getSummary();
         Assertions.assertEquals(3, summary.size());
 
-        var match = summary.get(2);
+        var match = summary.getFirst();
         Assertions.assertEquals(1, match.getScoreHomeTeam());
         Assertions.assertEquals(0, match.getScoreAwayTeam());
     }
@@ -121,10 +121,9 @@ class ScoreboardTest {
         scoreboard.startMatch("Brazil", "Japan");
         scoreboard.startMatch("Norway", "Sweden");
         scoreboard.startMatch("China", "Russia");
-        var summary = scoreboard.getSummary();
-
         scoreboard.finishMatch("China", "Russia");
 
+        var summary = scoreboard.getSummary();
         Assertions.assertTrue(summary.stream().noneMatch(match -> match.getHomeTeam().equals("China")));
     }
 

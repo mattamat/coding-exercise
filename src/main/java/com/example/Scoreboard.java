@@ -47,6 +47,9 @@ public class Scoreboard {
                 .findFirst()
                 .orElseThrow();
 
+        System.out.println(finishedMatch);
+
         summary.remove(finishedMatch);
+        System.out.println(summary);
     }
 }
