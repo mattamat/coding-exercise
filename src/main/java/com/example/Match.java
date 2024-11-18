@@ -40,4 +40,5 @@ public class Match {
     public String toString() {
         return homeTeam + " " + homeTeamScore + " - " + awayTeam + " " + awayTeamScore;
     }
+
 }

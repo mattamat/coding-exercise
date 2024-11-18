@@ -1,6 +1,7 @@
 package com.example;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Scoreboard {
@@ -12,7 +13,10 @@ public class Scoreboard {
     }
 
     public List<Match> getSummary() {
-        return summary;
+        return summary.stream()
+                .sorted(Comparator.comparing(match -> match.getScoreHomeTeam() + match.getScoreAwayTeam()))
+                .toList()
+                .reversed();
     }
 
     public void updateScore(String homeTeam, String awayTeam, int homeTeamScore, int awayTeamScore) throws Exception {
