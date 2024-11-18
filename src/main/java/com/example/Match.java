@@ -2,8 +2,8 @@ package com.example;
 
 public class Match {
 
-    private String homeTeam;
-    private String awayTeam;
+    private final String homeTeam;
+    private final String awayTeam;
     private int homeTeamScore;
     private int awayTeamScore;
 
@@ -28,12 +28,22 @@ public class Match {
         return awayTeamScore;
     }
 
-    public void setHomeScore(int homeTeamScore) {
+    public void setHomeScore(int homeTeamScore) throws Exception {
+        if (homeTeamScore < 0 ) {
+            throw new Exception("Score can not be a negative number");
+        }
         this.homeTeamScore = homeTeamScore;
     }
 
-    public void setAwayScore(int awayTeamScore) {
+    public void setAwayScore(int awayTeamScore) throws Exception {
+        if (awayTeamScore < 0 ) {
+            throw new Exception("Score can not be a negative number");
+        }
         this.awayTeamScore = awayTeamScore;
+    }
+
+    public int getTotalScore() {
+        return homeTeamScore + awayTeamScore;
     }
 
     @Override
